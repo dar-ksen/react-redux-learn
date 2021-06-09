@@ -1,18 +1,25 @@
 import React from 'react';
-import Counter from './views/Counter';
-import NameCard from './views/NameCard';
-import TodoList from './views/TodoList';
+import Container from './components/Container';
+import Counter from './components/Counter';
+import NameCard from './components/NameCard';
+import TodoList from './components/TodoList';
 
 function App() {
 
     return (
         <div className="App">
             <main className="container">
-                <Counter/>
+                <Container title={'Simple Counter'}>
+                    <Counter/>
+                </Container>
                 <div className="divider"></div>
-                <NameCard/>
+                <Container title={'Name card'}>
+                    <NameCard/>
+                </Container>
                 <div className="divider"></div>
-                <TodoList/>
+                <Container title={'Todo List'}>
+                    <TodoList/>
+                </Container>
                 <div className="divider"></div>
             </main>
         </div>

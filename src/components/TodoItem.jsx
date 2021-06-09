@@ -1,18 +1,16 @@
 import React from 'react';
 
-const TodoItem = ({id, content, removeTodoItem}) => {
+const TodoItem = ({content, removeTodoItem}) => {
 
     return (
-        <li className="collection-item" key={id}>
+        <div className="todo-item">
             {content}
-            <span
-                onClick={() => {
-                removeTodoItem(id)
-            }}
-                className="secondary-content">
-                <i className="remove-btn material-icons blue-text">clear</i>
-            </span>
-        </li>
+            <button
+                onClick={removeTodoItem}
+                className="btn-floating waves-effect waves-light red">
+                <i className="remove-btn material-icons">clear</i>
+            </button>
+        </div>
     );
 }
 

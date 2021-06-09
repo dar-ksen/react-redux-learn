@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Counter = () => {
@@ -7,8 +7,7 @@ const Counter = () => {
     const dispatch = useDispatch();
 
     return (
-        <section id="section-counter">
-            <h3 className="center-align white-text blue">Simple Counter</h3>
+        <Fragment>
             <h5 className="center-align">{count}</h5>
             <div className="row counter-btns">
                 <button className="btn-small blue" onClick={() => dispatch({ type: 'DOUBLE_COUNT' })}>
@@ -30,8 +29,7 @@ const Counter = () => {
                 Reset
                 </button>
             </div>
-     
-        </section>
+        </Fragment>
     )
 }
 

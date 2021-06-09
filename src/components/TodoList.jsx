@@ -1,8 +1,28 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import TodoItem from "../components/TodoItem";
+import TodoItem from "./TodoItem";
 
-const TodoList = () => {
+const TodoList = ({todoList, removeTodoItem}) => {
+
+  if (todoList.length === 0) {
+    return <p className="center-align">You don't have anything to do! Awesome!</p>
+  }
+
+  return (
+    <ul className="collection">
+          {todoList.map((item) => {
+              const {id, ...content} = item;
+              return (
+              <li className="collection-item" key={id}>
+                <TodoItem {...content} removeTodoItem={() => removeTodoItem(id)} />
+              </li>
+              )
+          })}
+    </ul>
+  )
+}
+
+const TodoContainer = () => {
   const todoList = useSelector((state) => state.todos.todoList);
   const dispatch = useDispatch();
   const [inputTodo, setInputTodo] = useState("");
@@ -32,15 +52,9 @@ const TodoList = () => {
    }
 
   return (
-    <section id="section-todo">
-      <h3 className="center-align white-text blue">Todo List</h3>
-        <ul className="collection">
-          {todoList.map((item) => {
-            return <TodoItem {...item} removeTodoItem={removeTodoItem} />;
-          })}
-        </ul>
-      {todoList.length === 0 && <p className="center-align">You don't have anything to do! Awesome!</p>}
-
+    <Fragment>
+        
+      <TodoList todoList={todoList} removeTodoItem={removeTodoItem}/>
       <div className="row">
         <p className="red-text err-msg col s12 center-align">{errMsg}</p>
         <div className="input-field col s10">
@@ -60,8 +74,8 @@ const TodoList = () => {
           Add
         </button>
       </div>
-    </section>
+    </Fragment>
   );
 };
 
-export default TodoList;
+export default TodoContainer;
