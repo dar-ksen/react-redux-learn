@@ -22,7 +22,7 @@ const EditNameCard = () => {
       </div>
       <div className="input-field col s4">
         <input
-          value={person.name}
+          value={person.occupation}
           id="occupation"
           type="text"
           onChange={(e) =>
